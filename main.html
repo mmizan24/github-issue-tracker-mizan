@@ -1,13 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-<body>
+    <title>Dashboard</title>
 
-    <h1>This is main,html</h1>
-    
+
+    <!-- Tailwind link establishment  -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- daisyUI link establishment  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+
+    <!-- fontawesome cnd establishment  -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- google font link  -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Geist", sans-serif;
+
+        }
+    </style>
+</head>
+
+<body class=" mt-10">
+
+    <!-- Navbar -->
+    <div class="flex justify-center w-full">
+        <nav
+            class="flex justify-between items-center p-4 bg-white text-black shadow-md w-full max-w-6xl mx-auto rounded-lg mt-4">
+
+            <h1 class="text-xl font-bold">
+                <i class="fa-brands fa-github"></i> GitHub Issue Tracker
+            </h1>
+
+            <div class="flex gap-2">
+                <input id="searchInput" class="border border-gray-300 rounded-md p-1 focus:outline-[#4A00FF]"
+                    placeholder="Search...">
+
+                <button onclick="searchIssues()" class="bg-[#4A00FF] text-white px-4 py-1 rounded-md">
+                    Search
+                </button>
+            </div>
+
+        </nav>
+    </div>
+
+
+
+    <!-- BTN Tabs -->
+    <div class="flex gap-2 p-1 max-w-6xl mx-auto shadow-md mt-10 mb-5">
+
+        <button onclick="filterIssues('all')" id="allBtn"
+            class="tabBtn w-1/6  text-black rounded-md h-10 shadow-sm">
+            All
+        </button>
+
+        <button onclick="filterIssues('open')" id="openBtn" class="tabBtn w-1/6  rounded-md shadow-sm">
+            Open
+        </button>
+
+        <button onclick="filterIssues('closed')" id="closedBtn" class="tabBtn w-1/6  rounded-md shadow-sm">
+            Closed
+        </button>
+
+    </div>
+
+    <!-- Banner  -->
+
+    <div id="banner-conainer" class="max-w-6xl mx-auto flex justify-between shadow-lg text-center  ">
+
+        <div class=" flex  gap-1">
+            <img src="./assets/Aperture.png" alt="">
+            <p>50</p> <span class="">Issues</span>
+        </div>
+        <p>Track and manage your project issues</p>
+
+
+
+        <div>
+            <button>open</button>
+            <button>Closed</button>
+        </div>
+
+
+
+    </div>
+
+    <!-- for sppiner  -->
+
+    <div id="spinner" class="hidden text-center mt-10">
+        <span class="loading loading-spinner loading-lg"></span>
+    </div>
+
+    <!-- ISSUE GRID -->
+
+
+
+    <div id="issueContainer" class="max-w-6xl mx-auto grid grid-cols-4 gap-4 p-4">
+    </div>
+
+
+    <!-- MODAL -->
+
+
+
+
+    <div id="modal" class="fixed inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
+
+        <div class="bg-white p-6 w-96">
+
+            <h2 id="modalTitle" class="text-xl font-bold"></h2>
+
+            <p id="modalDescription" class="mt-3"></p>
+
+            <button onclick="closeModal()" class="bg-red-500 text-white px-3 py-1 mt-4">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="./js/api.js"></script>
+    <script src="./js/app.js"></script>
+
 </body>
+
 </html>
