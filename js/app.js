@@ -1,10 +1,14 @@
 let allIssues = [];
 
-window.onload = async function () {
+window.onload = async function(){
 
-    allIssues = await fetchIssues();
+showSpinner();
 
-    displayIssues(allIssues);
+allIssues = await fetchIssues();
+
+displayIssues(allIssues);
+
+hideSpinner();
 
 }
 
@@ -60,31 +64,42 @@ ${img}
         div.onclick = () => showModal(issue.id);
 
         container.appendChild(div);
+        
 
     });
+
+    
 
 }
 
 
-function filterIssues(type) {
+function filterIssues(type){
 
-    let filtered = allIssues;
+showSpinner();
 
-    if (type === "open") {
-        filtered = allIssues.filter(
-            i => i.status === "open"
-        );
-    }
+setTimeout(() => {
 
-    if (type === "closed") {
-        filtered = allIssues.filter(
-            i => i.status === "closed"
-        );
-    }
+let filtered = allIssues;
 
-    displayIssues(filtered);
+if(type === "open"){
+filtered = allIssues.filter(
+i => i.status === "open"
+);
+}
 
-    setActiveTab(type);
+if(type === "closed"){
+filtered = allIssues.filter(
+i => i.status === "closed"
+);
+}
+
+displayIssues(filtered);
+
+setActiveTab(type);
+
+hideSpinner();
+
+}, 500);
 
 }
 
@@ -104,15 +119,19 @@ function setActiveTab(type) {
 
 // searching function 
 
-async function searchIssues() {
+async function searchIssues(){
 
-    const text =
-        document.getElementById("searchInput").value;
+const text =
+document.getElementById("searchInput").value;
 
-    const result =
-        await searchIssueAPI(text);
+showSpinner();
 
-    displayIssues(result);
+const result =
+await searchIssueAPI(text);
+
+displayIssues(result);
+
+hideSpinner();
 
 }
 
@@ -154,6 +173,7 @@ function hideSpinner(){
 document.getElementById("spinner")
 .classList.add("hidden");
 }
+
 
 
 

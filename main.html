@@ -98,15 +98,17 @@
 
     </div>
 
+
+
     <!-- for sppiner  -->
 
-    <div id="spinner" class="hidden text-center mt-10">
-        <span class="loading loading-spinner loading-lg"> spin</span>
+    <div id="spinner" class="text-center mt-10 hidden">
+
+        <i class="fa-solid fa-spinner text-4xl text-blue-500 animate-spin"></i>
+
     </div>
 
     <!-- ISSUE GRID -->
-
-
 
     <div id="issueContainer" class="max-w-6xl mx-auto grid grid-cols-3 gap-4 p-4">
     </div>
@@ -116,15 +118,15 @@
 
     <div id="modal" class="fixed inset-2 hidden  flex justify-center items-center shadow-2xl ">
 
-        <div class="bg-white p-6 w-96 shadow-lg rounded-md">
+        <div class="bg-gray-100 p-6 w-96 shadow- rounded-md">
             <h2 id="modalTitle" class="text-xl font-bold"></h2>
             <p id="modalDescription" class="mt-3"></p>
-            <button onclick="closeModal()" class="bg-red-500 text-white px-3 py-1 mt-4">
+            <button onclick="closeModal()" class="  self-end bg-red-500 text-white px-3 py-3 mt-4 rounded-md">
                 Close
             </button>
-            
+
         </div>
-        
+
     </div>
 
     <script src="./js/api.js"></script>
