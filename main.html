@@ -32,12 +32,12 @@
     </style>
 </head>
 
-<body class=" mt-10">
+<body class=" mt-10 bg-gray-30 shadow-lg max-w-7xl mx-auto">
 
     <!-- Navbar -->
     <div class="flex justify-center w-full">
         <nav
-            class="flex justify-between items-center p-4 bg-white text-black shadow-md w-full max-w-6xl mx-auto rounded-lg mt-4">
+            class="flex justify-between items-center p-4 bg-white text-black shadow-md w-full max-w-7xl mx-auto rounded-lg mt-4">
 
             <h1 class="text-xl font-bold">
                 <i class="fa-brands fa-github"></i> GitHub Issue Tracker
@@ -58,10 +58,10 @@
 
 
     <!-- BTN Tabs -->
-    <div class="flex gap-2 p-1 max-w-6xl mx-auto shadow-md mt-10 mb-5">
+    <div class="flex gap-2 p-5 max-w-6xl mx-auto shadow-md mt-10 mb-5">
 
         <button onclick="filterIssues('all')" id="allBtn"
-            class="tabBtn w-1/6  text-black rounded-md h-10 shadow-sm">
+            class="tabBtn w-1/6  text-black rounded-md h-10 shadow-sm bg-blue-500">
             All
         </button>
 
@@ -77,7 +77,7 @@
 
     <!-- Banner  -->
 
-    <div id="banner-conainer" class="max-w-6xl mx-auto flex justify-between shadow-lg text-center  ">
+    <div id="banner-conainer" class="max-w-6xl mx-auto flex justify-between shadow-lg text-center p-10  ">
 
         <div class=" flex  gap-1">
             <img src="./assets/Aperture.png" alt="">
@@ -87,8 +87,10 @@
 
 
 
-        <div>
-            <button>open</button>
+        <div class="flex gap-2">
+            <img src="./assets/Open-Status.png" alt="">
+            <button >Open</button>
+            <img src="./assets/Closed- Status .png" alt="">
             <button>Closed</button>
         </div>
 
@@ -106,7 +108,7 @@
 
 
 
-    <div id="issueContainer" class="max-w-6xl mx-auto grid grid-cols-4 gap-4 p-4">
+    <div id="issueContainer" class="max-w-6xl mx-auto grid grid-cols-3 gap-4 p-4">
     </div>
 
 

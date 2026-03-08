@@ -25,14 +25,17 @@ issue.status === "open"
 const div = document.createElement("div");
 
 div.className =
-`border-t-4 ${border} shadow p-4 cursor-pointer`;
+`border-t-4 ${border} shadow p-4 cursor-pointer rounded-md mt-5 text-left`;
 
 div.innerHTML = `
 
-<h2 class="font-bold">
+<h2 class="font-bold text-wrap">
 ${issue.title}
 </h2>
-
+<div class="flex justify-between mt-5 mb-5">
+ <img src="./assets/Open-Status.png" alt="">
+<button class="bg-yellow-300 rounded-md"> ${issue.priority}</button>
+</div>
 <p>${issue.description}</p>
 
 <p>Status: ${issue.status}</p>
@@ -41,7 +44,8 @@ ${issue.title}
 
 <p>Author: ${issue.author}</p>
 
-<p>Priority: ${issue.priority}</p>
+
+<p>createdAt:${issue.createdAt}
 
 `;
 
@@ -75,7 +79,7 @@ setActiveTab(type);
 
 }
 
-// Activate tab
+// toggling the btn 
 
 function setActiveTab(type){
 
@@ -89,7 +93,7 @@ document.getElementById(type+"Btn")
 
 }
 
-// search system 
+// searching function 
 
 async function searchIssues(){
 
