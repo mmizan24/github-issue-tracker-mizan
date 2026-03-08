@@ -12,7 +12,7 @@ return data.data;
 
 }
 
-
+// fetching single issue 
 async function fetchSingleIssue(id){
 
 const res =
@@ -24,7 +24,7 @@ return data.data;
 
 }
 
-
+// fetcting search text 
 async function searchIssueAPI(text){
 
 const res =

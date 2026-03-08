@@ -8,9 +8,26 @@ allIssues = await fetchIssues();
 
 displayIssues(allIssues);
 
+updateIssueCount(allIssues);
+
 hideSpinner();
 
 }
+
+
+// issue count 
+
+function updateIssueCount(issues){
+
+const countElement =
+document.getElementById("count-issue");
+
+countElement.innerText = issues.length;
+
+}
+
+
+// display issue 
 
 function displayIssues(issues) {
 
@@ -46,9 +63,19 @@ ${issue.title}
 <div class="flex justify-between mt-5 mb-5">
 ${img}
 
-<button class="bg-red-300 opacity-50 text-red-600 rounded-md"> ${issue.priority}</button>
+<button class="bg-red-300 opacity-50 text-red-600 rounded-md px-2"> ${issue.priority}</button>
 </div>
-<p>${issue.description}</p>
+<p class="text-gray-500">${issue.description}</p>
+
+<div class="flex justify-between mt-3 text-sm text-gray-600">
+
+<span class="bg-red-100 shadow-sm rounded-sm px-2 text-red-400">${issue.labels[0] || "follow suggestion "}</span>
+
+<span class="bg-yellow-100 shadow-sm rounded-sm px-2 text-red-400">${issue.labels[1] || "follow suggestion "}</span>
+
+</div>
+
+<hr class=" border-gray-300 p-2 mt-2 w-full">
 
 <p>Status: ${issue.status}</p>
 
@@ -94,12 +121,13 @@ i => i.status === "closed"
 }
 
 displayIssues(filtered);
+updateIssueCount(filtered);
 
 setActiveTab(type);
 
 hideSpinner();
 
-}, 500);
+}, 200); // setting the time to see the spin in the screen ;
 
 }
 
@@ -130,6 +158,8 @@ const result =
 await searchIssueAPI(text);
 
 displayIssues(result);
+
+updateIssueCount(result);
 
 hideSpinner();
 
