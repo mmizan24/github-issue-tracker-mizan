@@ -1,3 +1,8 @@
+// if(localStorage.getItem("isLoggedIn") !== "true"){
+// window.location.href = "index.html";
+// }
+
+
 let allIssues = [];
 
 window.onload = async function(){
@@ -284,6 +289,16 @@ document.getElementById("spinner")
 function hideSpinner(){
 document.getElementById("spinner")
 .classList.add("hidden");
+}
+
+// logout function
+
+function logout(){
+
+localStorage.removeItem("isLoggedIn");
+
+window.location.href = "index.html";
+
 }
 
 
