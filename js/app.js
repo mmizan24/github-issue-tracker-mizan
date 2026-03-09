@@ -1,6 +1,4 @@
-// if(localStorage.getItem("isLoggedIn") !== "true"){
-// window.location.href = "index.html";
-// }
+
 
 
 let allIssues = [];
@@ -51,6 +49,10 @@ function displayIssues(issues) {
             issue.status === 'open'
                 ? `<img src="./assets/Open-Status.png" class="w-6 h-6" alt="Open">`
                 : `<img src="./assets/Closed- Status .png" class="w-6 h-6" alt="Closed">`;
+            let img2=
+            issue.labels[0]==='bug'
+                ? `<i class="fa-solid fa-bug"></i>`
+                :``;
 
         const div = document.createElement("div");
 
@@ -80,7 +82,8 @@ ${issue.description}
 <div class="flex flex-wrap gap-2 mt-3 text-xs sm:text-sm text-gray-600">
 
 <span class="bg-red-100 shadow-sm rounded-sm px-2 text-red-400">
-<i class="fa-solid fa-bug"></i>
+
+${img2}
 ${issue.labels[0] || "follow suggestion"}
 </span>
 
@@ -93,7 +96,7 @@ ${issue.labels[1] || "follow suggestion"}
 <hr class="border-gray-300 my-3 w-full">
 
 <p class="text-sm">Status: ${issue.status}</p>
-<p class="text-sm">Category: ${issue.category}</p>
+
 <p class="text-sm">Author: ${issue.author}</p>
 
 <p class="text-xs text-gray-500 mt-1">
