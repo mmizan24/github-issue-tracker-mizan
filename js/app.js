@@ -259,7 +259,8 @@ document.getElementById("modalTitle")
 // document.getElementById("label-one")
 const label = document.getElementById("label-one");
 
-label.innerHTML = `<i class="fa-solid fa-bug"></i> ${issue.labels?.[0] || "follow suggestion"}`;
+
+label.innerHTML = ` ${issue.labels?.[0] || "follow suggestion"}`;
 
 document.getElementById("label-two")
 .innerText = issue.labels?.[1] || "follow suggestion";
