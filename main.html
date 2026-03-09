@@ -35,19 +35,21 @@
 <body class=" mt-10 bg-gray-30 shadow-lg max-w-7xl mx-auto">
 
     <!-- Navbar -->
-    <div class="flex justify-center w-full">
+    <div class="flex justify-center w-full ">
         <nav
-            class="flex justify-between items-center p-4 bg-white text-black shadow-md w-full max-w-7xl mx-auto rounded-lg mt-4">
+            class="flex justify-between items-center p-4 bg-white text-black shadow-md w-full max-w-7xl mx-auto rounded-lg mt-4 md:flex-row md:justify-between md:items-center">
 
-            <h1 class="text-xl font-bold">
+            <h1 class="text-xl font-bold md:text-left">
                 <i class="fa-brands fa-github"></i> GitHub Issue Tracker
             </h1>
 
-            <div class="flex gap-2">
-                <input id="searchInput" class="border border-gray-300 rounded-md p-1 focus:outline-[#4A00FF]"
+            <div class="flex gap-2 sm:flex-row md:w-auto">
+                <input id="searchInput"
+                    class="border border-gray-300 rounded-md p-1 focus:outline-[#4A00FF] sm:w-auto md:w-auto"
                     placeholder="Search...">
 
-                <button onclick="searchIssues()" class="bg-[#4A00FF] text-white px-4 py-1 rounded-md">
+                <button onclick="searchIssues()"
+                    class="bg-[#4A00FF] text-white px-4 py-1 rounded-md md:w-auto md:flex-col">
                     Search
                 </button>
             </div>
@@ -58,7 +60,7 @@
 
 
     <!-- BTN Tabs with filtering the issue -->
-    <div class="flex gap-2 p-5 max-w-6xl mx-auto shadow-md mt-10 mb-5">
+    <div class="flex gap-2 p-5 max-w-6xl mx-auto shadow-md mt-10 mb-5 md:w-auto">
 
         <button onclick="filterIssues('all')" id="allBtn"
             class="tabBtn w-1/6  text-black rounded-md h-10 shadow-sm bg-blue-500">
@@ -77,29 +79,32 @@
 
     <!-- Banner  -->
 
-    <div id="banner-conainer" class="max-w-6xl mx-auto flex justify-between shadow-lg text-center p-10  ">
+    <div id="banner-conainer"
+        class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between items-center shadow-lg text-center p-6 md:p-10 gap-4">
 
-        <div class=" flex  gap-1">
+        <!-- Issue Count -->
+        <div class="flex gap-2 items-center">
             <img src="./assets/Aperture.png" alt="">
-            <p class="text-2xl font-bold">
+            <p class="text-xl md:text-2xl font-bold">
                 <span id="count-issue">50</span> Issues
             </p>
         </div>
-        <p>Track and manage your project issues</p>
 
+        <!-- Description -->
+        <p class="text-sm md:text-base">
+            Track and manage your project issues
+        </p>
 
-
-        <div class="flex gap-2">
+        <!-- Buttons -->
+        <div class="flex gap-3 items-center">
             <img src="./assets/Open-Status.png" alt="">
-            <button>Open</button>
+            <button class="px-3 py-1 bg-green-500 text-white rounded">Open</button>
+
             <img src="./assets/Closed- Status .png" alt="">
-            <button>Closed</button>
+            <button class="px-3 py-1 bg-purple-500 text-white rounded">Closed</button>
         </div>
 
-
-
     </div>
-
 
 
     <!-- for sppiner  -->
@@ -112,20 +117,35 @@
 
     <!-- ISSUE GRID -->
 
-    <div id="issueContainer" class="max-w-6xl mx-auto grid grid-cols-3 gap-4 p-4">
+    <div id="issueContainer" class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
     </div>
 
-
-    <!-- MODAL -->
+    
 
     <div id="modal" class="fixed inset-2 hidden  flex justify-center items-center shadow-2xl ">
 
-        <div class="bg-gray-100 p-6 w-96 shadow- rounded-md">
+        <div class="bg-gray-100 p-6 w-96 shadow- rounded-md ">
             <h2 id="modalTitle" class="text-xl font-bold"></h2>
+
+            <div class="flex gap-2  mt-3 text-sm text-gray-600">
+
+                <span id="label-one" class="bg-red-100 shadow-sm rounded-sm px-2 text-red-400"></i></span>
+
+                <span id="label-two" class="bg-yellow-100 shadow-sm rounded-sm px-2 text-red-400"></span>
+
+            </div>
+
+
             <p id="modalDescription" class="mt-3"></p>
-            <button onclick="closeModal()" class="  self-end bg-red-500 text-white px-3 py-3 mt-4 rounded-md">
+
+
+
+            <button onclick="closeModal()" class="  bg-blue-500 text-white px-3 py-3 mt-4 rounded-md">
                 Close
             </button>
+
+
+
 
         </div>
 

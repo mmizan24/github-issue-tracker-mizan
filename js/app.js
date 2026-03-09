@@ -29,11 +29,10 @@ countElement.innerText = issues.length;
 
 // display issue 
 
+
 function displayIssues(issues) {
 
-    const container =
-        document.getElementById("issueContainer");
-
+    const container = document.getElementById("issueContainer");
     container.innerHTML = "";
 
     issues.forEach(issue => {
@@ -42,63 +41,137 @@ function displayIssues(issues) {
             issue.status === "open"
                 ? "border-green-500"
                 : "border-purple-500";
-        
-                let img=
-                issue.status==='open'
-                ? `<img src="./assets/Open-Status.png" alt="Open">`
-                : `<img src="./assets/Closed- Status .png" alt="Closed">`;
+
+        let img =
+            issue.status === 'open'
+                ? `<img src="./assets/Open-Status.png" class="w-6 h-6" alt="Open">`
+                : `<img src="./assets/Closed- Status .png" class="w-6 h-6" alt="Closed">`;
 
         const div = document.createElement("div");
 
         div.className =
-            `border-t-4 ${border} shadow p-4 cursor-pointer rounded-md mt-5 text-left`;
+            `border-t-4 ${border} shadow p-4 cursor-pointer rounded-md text-left bg-white hover:shadow-lg transition`;
 
         div.innerHTML = `
 
-        
-
-<h2 class="font-bold text-wrap">
+<h2 class="font-bold text-lg break-words">
 ${issue.title}
 </h2>
-<div class="flex justify-between mt-5 mb-5">
+
+<div class="flex justify-between items-center mt-4 mb-4">
+
 ${img}
 
-<button class="bg-red-300 opacity-50 text-red-600 rounded-md px-2"> ${issue.priority}</button>
-</div>
-<p class="text-gray-500">${issue.description}</p>
-
-<div class="flex justify-between mt-3 text-sm text-gray-600">
-
-<span class="bg-red-100 shadow-sm rounded-sm px-2 text-red-400">${issue.labels[0] || "follow suggestion "}</span>
-
-<span class="bg-yellow-100 shadow-sm rounded-sm px-2 text-red-400">${issue.labels[1] || "follow suggestion "}</span>
+<button class="bg-red-200 text-red-600 text-xs sm:text-sm rounded-md px-2 py-1">
+${issue.priority}
+</button>
 
 </div>
 
-<hr class=" border-gray-300 p-2 mt-2 w-full">
+<p class="text-gray-500 text-sm break-words">
+${issue.description}
+</p>
 
-<p>Status: ${issue.status}</p>
+<div class="flex flex-wrap gap-2 mt-3 text-xs sm:text-sm text-gray-600">
 
-<p>Category: ${issue.category}</p>
+<span class="bg-red-100 shadow-sm rounded-sm px-2 text-red-400">
+<i class="fa-solid fa-bug"></i>
+${issue.labels[0] || "follow suggestion"}
+</span>
 
-<p>Author: ${issue.author}</p>
+<span class="bg-yellow-100 shadow-sm rounded-sm px-2 text-yellow-600">
+${issue.labels[1] || "follow suggestion"}
+</span>
 
+</div>
 
-<p>createdAt:${issue.createdAt}
+<hr class="border-gray-300 my-3 w-full">
 
+<p class="text-sm">Status: ${issue.status}</p>
+<p class="text-sm">Category: ${issue.category}</p>
+<p class="text-sm">Author: ${issue.author}</p>
+
+<p class="text-xs text-gray-500 mt-1">
+createdAt: ${issue.createdAt}
+</p>
 `;
 
         div.onclick = () => showModal(issue.id);
 
         container.appendChild(div);
-        
 
     });
 
-    
-
 }
 
+// function displayIssues(issues) {
+
+//     const container =
+//         document.getElementById("issueContainer");
+
+//     container.innerHTML = "";
+
+//     issues.forEach(issue => {
+
+//         let border =
+//             issue.status === "open"
+//                 ? "border-green-500"
+//                 : "border-purple-500";
+        
+//                 let img=
+//                 issue.status==='open'
+//                 ? `<img src="./assets/Open-Status.png" alt="Open">`
+//                 : `<img src="./assets/Closed- Status .png" alt="Closed">`;
+
+//         const div = document.createElement("div");
+
+//         div.className =
+//             `border-t-4 ${border} shadow p-4 cursor-pointer rounded-md mt-5 text-left`;
+
+//         div.innerHTML = `
+
+        
+
+// <h2 class="font-bold text-wrap">
+// ${issue.title}
+// </h2>
+// <div class="flex justify-between mt-5 mb-5">
+// ${img}
+
+// <button class="bg-red-300 opacity-50 text-red-600 rounded-md px-2"> ${issue.priority}</button>
+// </div>
+// <p class="text-gray-500">${issue.description}</p>
+
+// <div class="flex gap-2 mt-3 text-sm text-gray-600">
+
+// <span class="bg-red-100 shadow-sm rounded-sm px-2 text-red-400" ><i class="fa-solid fa-bug "></i>${issue.labels[0] || "follow suggestion "}</span>
+
+// <span class="bg-yellow-100 shadow-sm rounded-sm px-2 text-red-400">${issue.labels[1] || "follow suggestion "}</span>
+
+// </div>
+
+// <hr class=" border-gray-300 p-2 mt-2 w-full">
+
+// <p>Status: ${issue.status}</p>
+
+// <p>Category: ${issue.category}</p>
+
+// <p>Author: ${issue.author}</p>
+
+
+// <p>createdAt:${issue.createdAt}
+
+// `;
+
+//         div.onclick = () => showModal(issue.id);
+
+//         container.appendChild(div);
+        
+
+//     });
+
+
+// }
 
 function filterIssues(type){
 
@@ -131,7 +204,7 @@ hideSpinner();
 
 }
 
-// toggling the btn 
+// toggling the btn .....
 
 function setActiveTab(type) {
 
@@ -174,6 +247,15 @@ await fetchSingleIssue(id);
 
 document.getElementById("modalTitle")
 .innerText = issue.title;
+
+// document.getElementById("label-one")
+const label = document.getElementById("label-one");
+
+label.innerHTML = `<i class="fa-solid fa-bug"></i> ${issue.labels?.[0] || "follow suggestion"}`;
+
+document.getElementById("label-two")
+.innerText = issue.labels?.[1] || "follow suggestion";
+
 
 document.getElementById("modalDescription")
 .innerText = issue.description;
